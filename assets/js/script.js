@@ -5,6 +5,7 @@ var city = ""; //need user input
 var requestUrlTest =
   "http://api.openweathermap.org/data/2.5/forecast?q=sacramento&appid=e15cbfae7f895d1b67f2da6731580502";
 
+// Fetching the Weather API data
 fetch(requestUrlTest)
   .then(function (response) {
     return response.json();
@@ -13,30 +14,30 @@ fetch(requestUrlTest)
     console.log(data);
 
     for (var i = 0; i < data.length; i++) {
-      console.log(data[i]);
+      console.log(data.length);
     }
   });
 
 // function getWeatherApi() {
 
-//   fetch(testApitUrlWeather)
-//   .then(function (response)) {
-//       return response.json();
-// })
+  fetch(testApitUrlWeather)
+  .then(function (response)) {
+      return response.json();
+})
 
-// .then(function (data)) {}
-// // .then((response) => response.json())
-// //     .then((response) => {
-// //       console.log(response);
+.then(function (data)) {}
+.then((response) => response.json())
+    .then((response) => {
+      console.log(response);
 
-// //       document.getElementById("city").innerHTML = "'" + response.content + "'";
-// //       document.getElementById("temp").innerHTML =
-// //         "author: " + response.originator.name;
-// //     })
-// //     .catch((err) => {
-// //       console.log(err);
-// //     });
-// // }
+      document.getElementById("city").innerHTML = "'" + response.content + "'";
+      document.getElementById("temp").innerHTML =
+        "author: " + response.originator.name;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 // var searchBtn = document.getElementById("searchBtn");
 

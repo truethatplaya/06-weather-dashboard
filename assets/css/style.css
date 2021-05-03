@@ -1,4 +1,17 @@
-.leftAside {
-  height: 100%;
+#dashboardHeader {
+  background-color: black;
+  text-align: center;
+  color: gray;
+}
+
+.asideLeft {
   float: left;
+  width: 25%;
+  height: 350px;
+}
+
+.currentContainer {
+  padding: 10px;
+  text-align: left;
+  border: black solid;
 }
