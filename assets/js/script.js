@@ -13,18 +13,30 @@ var currentUV = document.querySelector("#currentUV");
 
 //Calling the Weather API to run on the click of the serach button. Fetching that response with the Test URL
 function getWeatherApi() {
-  fetch(requestUrlTest)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      console.log(response.city.name); //this works
+  city = document.querySelector("#cityInput").value;
+  console.log(city);
+
+  query = currentUrl + city + apiKey + "&units=imperial";
+
+  fetch(query)
+    .then((response) => response.json())
+    .then((response) => {
+      currentCity.textContent = response.name;
+      currentTemp.textContent = "Current Temp: " + response.main.temp + " F";
+      currentHumidity.textContent =
+        "Current Humidity: " + response.main.humidity + " %";
+      currentWindSpeed.textContent =
+        "Current Wind Speed: " + response.wind.speed + " MPH";
     });
 }
 
-//! BELOW THIS LINE WORKS TOO! //
 function getForcastApi() {
-  fetch(requestUrlTest)
+  city = document.querySelector("#cityInput").value;
+  console.log(city);
+
+  query = forcastUrl + city + apiKey + "&units=imperial";
+
+  fetch(query)
     .then((response) => response.json())
     .then((response) => {
       // These all work
@@ -55,4 +67,4 @@ function getForcastApi() {
 
 // // var searchBtn = document.getElementById("searchBtn");
 
-searchBtn.addEventListener("click", getForcastApi);
+searchBtn.addEventListener("click", getWeatherApi);
