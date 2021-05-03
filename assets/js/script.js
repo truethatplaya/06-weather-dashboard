@@ -5,40 +5,38 @@ var city = ""; //need user input
 var requestUrlTest =
   "http://api.openweathermap.org/data/2.5/forecast?q=sacramento&appid=e15cbfae7f895d1b67f2da6731580502";
 
-// Fetching the Weather API data
-fetch(requestUrlTest)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-
-    for (var i = 0; i < data.length; i++) {
-      console.log(data.length);
-    }
-  });
-
-// function getWeatherApi() {
-
-  fetch(testApitUrlWeather)
-  .then(function (response)) {
+// Fetching the Weather API response.
+function getWeatherApi() {
+  fetch(requestUrlTest)
+    .then(function (response) {
       return response.json();
-})
-
-.then(function (data)) {}
-.then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-
-      document.getElementById("city").innerHTML = "'" + response.content + "'";
-      document.getElementById("temp").innerHTML =
-        "author: " + response.originator.name;
     })
-    .catch((err) => {
-      console.log(err);
+    .then(function (response) {
+      console.log(response.city.name); //this works
+
+      for (var i = 0; i < response.length; i++) {
+        console.log(response.name);
+      }
     });
 }
 
-// var searchBtn = document.getElementById("searchBtn");
+//! BELOW THIS LINE WORKS TOO! //
+// function getWeatherApi() {
+//   fetch(requestUrlTest)
+//     .then((response) => response.json())
+//     .then((response) => {
+//       console.log(response);
+//       console.log(response.city.name);
 
-// searchBtn.addEventListener("click", getWeatherApi);
+//       // document.getElementById("quote").innerHTML = "'" + response.city.name + "'";
+//       // document.getElementById("author").innerHTML =
+//       //   "author: " + response.originator.name;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
+
+// // var searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", getWeatherApi);
