@@ -2,8 +2,6 @@ var apiKey = "&appid=e15cbfae7f895d1b67f2da6731580502";
 var forcastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var currentUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
 var city = ""; //need user input
-var requestUrlTest =
-  "http://api.openweathermap.org/data/2.5/forecast?q=sacramento&appid=e15cbfae7f895d1b67f2da6731580502";
 
 var currentCity = document.querySelector("#currentCity");
 var currentTemp = document.querySelector("#currentTemp");
@@ -11,10 +9,9 @@ var currentHumidity = document.querySelector("#currentHumidity");
 var currentWindSpeed = document.querySelector("#currentWindSpeed");
 var currentUV = document.querySelector("#currentUV");
 
-//Calling the Weather API to run on the click of the serach button. Fetching that response with the Test URL
+//Calling the Weather API to run on the click of the serach button.
 function getWeatherApi() {
   city = document.querySelector("#cityInput").value;
-  console.log(city);
 
   query = currentUrl + city + apiKey + "&units=imperial";
 
@@ -30,9 +27,9 @@ function getWeatherApi() {
     });
 }
 
+// Calling Forcast API to run on the lick of the serach button.
 function getForcastApi() {
   city = document.querySelector("#cityInput").value;
-  console.log(city);
 
   query = forcastUrl + city + apiKey + "&units=imperial";
 
@@ -65,6 +62,6 @@ function getForcastApi() {
     });
 }
 
-// // var searchBtn = document.getElementById("searchBtn");
+var searchBtn = document.getElementById("searchBtn");
 
-searchBtn.addEventListener("click", getWeatherApi);
+searchBtn.addEventListener("click", getWeatherApi, getForcastApi);

@@ -32,7 +32,7 @@ THEN I am again presented with current and future conditions for that city
 
 ## Screenshot
 
-[Go to a screenshot of password generator](./Assets/password-generator-screenshot.png)
+[Go to a screenshot of password generator](./assets/images/screenshot.png)
 
 ## Link to deploy website
 
