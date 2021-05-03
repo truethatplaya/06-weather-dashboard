@@ -11,7 +11,7 @@ var currentHumidity = document.querySelector("#currentHumidity");
 var currentWindSpeed = document.querySelector("#currentWindSpeed");
 var currentUV = document.querySelector("#currentUV");
 
-// Calling the Weather API to run on the click of the serach button. Fetching that response with the Test URL
+//Calling the Weather API to run on the click of the serach button. Fetching that response with the Test URL
 function getWeatherApi() {
   fetch(requestUrlTest)
     .then(function (response) {
@@ -19,32 +19,40 @@ function getWeatherApi() {
     })
     .then(function (response) {
       console.log(response.city.name); //this works
-      currentCity.textContent = response.city.name; //appending city to html
-
-      for (var i = 0; i < response.length; i++) {
-        console.log(response.length);
-      }
     });
 }
 
 //! BELOW THIS LINE WORKS TOO! //
-// function getWeatherApi() {
-//   fetch(requestUrlTest)
-//     .then((response) => response.json())
-//     .then((response) => {
-//       console.log(response);
-//       console.log(response.city.name);
+function getForcastApi() {
+  fetch(requestUrlTest)
+    .then((response) => response.json())
+    .then((response) => {
+      // These all work
+      console.log(response);
+      console.log(response.city.name);
+      console.log(response.list[0].main.temp);
+      console.log(response.list[0].main.humidity);
+      console.log(response.list[0].wind.speed);
+      currentCity.textContent = response.city.name; //appending city to html
+      currentTemp.textContent =
+        "Current Temp: " + response.list[0].main.temp + " F";
+      currentHumidity.textContent =
+        "Current Humidity: " + response.list[0].main.humidity;
+      currentWindSpeed.textContent =
+        "Current Wind Speed: " + response.list[0].wind.speed;
+      console.log(response.current.uvi); //this doesn't work yet
 
-// document.getElementById("quote").innerHTML =
-//   "'" + response.city.name + "'";
-// document.getElementById("author").innerHTML =
-//   "author: " + response.originator.name;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
+      // currentCity.textContent = response.city.name; //appending city to html
+
+      // for (var i = 0; i < response.length; i++) {
+      //   console.log(response.length);
+      // }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 // // var searchBtn = document.getElementById("searchBtn");
 
-searchBtn.addEventListener("click", getWeatherApi);
+searchBtn.addEventListener("click", getForcastApi);
