@@ -9,6 +9,9 @@ var currentHumidity = document.querySelector("#currentHumidity");
 var currentWindSpeed = document.querySelector("#currentWindSpeed");
 var currentUV = document.querySelector("#currentUV");
 
+var searchBtn = document.getElementById("searchBtn");
+var searchedCities = document.getElementById("cityInput");
+
 //Calling the Weather API to run on the click of the serach button.
 function getWeatherApi() {
   city = document.querySelector("#cityInput").value;
@@ -62,6 +65,18 @@ function getForcastApi() {
     });
 }
 
-var searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var cities = {
+    city: searchedCities.value.trim(),
+  };
+
+  localStorage.setItem("cities", JSON.stringify(cities));
+});
+
+// function saveToLocalStorage {
+
+// }
 
 searchBtn.addEventListener("click", getWeatherApi, getForcastApi);
